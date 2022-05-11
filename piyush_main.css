@@ -1,0 +1,440 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+html {
+  font-size: 14px;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.88rem;
+  background: linear-gradient(
+    45deg,
+    rgb(73, 73, 68) 50%,
+    rgb(124, 124, 122) 50%
+  );
+  overflow-x: hidden;
+}
+
+a {
+  color: white;
+}
+img {
+  display: block;
+  width: 70px;
+  margin-left: 30px;
+}
+
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 0.8rem;
+}
+h5 {
+  font-size: 0.77rem;
+}
+small {
+  font-size: 0.75rem;
+}
+
+/* .menu_board .top{
+    display: flex;
+} */
+.container {
+  display: grid;
+  width: 95vw;
+  margin: 30px 20px;
+  gap: 4.8rem 10px;
+  grid-template-columns: repeat(auto-fit, minmax(23rem, 1fr));
+  grid-template-rows: auto auto auto;
+}
+.menu_board {
+  height: 100vh;
+  width: 200px;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  /* background: gray; */
+}
+.menu_board.top {
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+.welcome {
+  color: rgb(127, 15, 179);
+  font-size: 40px;
+  color: white;
+}
+
+.menu_board .logo {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 15px 0px;
+  margin-left: -24px;
+  position: relative;
+  z-index: 10;
+}
+
+.menu_board .logo .img {
+  width: 2rem;
+  height: 2rem;
+}
+.menu_board .close {
+  display: none;
+}
+
+.menu_board .sidebar {
+  background: gray;
+  box-shadow: 2px 2px 50px 39px gray;
+  display: flex;
+  flex-direction: column;
+  height: 70vh;
+  position: relative;
+  top: 0rem;
+  width: 260px;
+  margin-left: -30px;
+  margin-top: 70px;
+}
+.menu_board.h3 {
+  font-weight: 500;
+}
+
+.menu_board .sidebar a {
+  display: flex;
+  color: white;
+  margin-top: 20px;
+  margin-left: 30px;
+  gap: 15px;
+  position: relative;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+.menu_board .sidebar a.active {
+  font-size: 1.6rem;
+  transition: all 0.5s ease;
+}
+
+.menu_board .sidebar a.active {
+  background: rgb(184, 147, 209);
+  color: rgb(127, 15, 179);
+  border-radius: 0 20% 20% 0;
+  margin-left: 0;
+  padding: 20px;
+  box-shadow: 0 0 10px rgb(127, 15, 179);
+}
+.menu_board .sidebar a.active::before {
+  content: "";
+  width: 6px;
+  height: 100%;
+  background-color: rgb(127, 15, 179);
+}
+.menu_board .sidebar a.active span {
+  color: rgb(127, 15, 179);
+  margin-left: calc(1rem - 3px);
+}
+.menu_board .sidebar a:hover {
+  color: rgb(112, 14, 158);
+  text-shadow: 0 0 20px rgb(112, 14, 158);
+}
+.menu_board .sidebar a:hover span {
+  margin-left: 2rem;
+}
+/* 
+main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 600px;
+    font-family: "Quicksand";
+    background: rgb(52, 53, 53);
+} */
+
+.calender {
+  padding: 15px 30px;
+  box-shadow: 5px 5px 12px blue;
+  background-color: rgb(32, 31, 31);
+  color: white;
+  border-radius: 30px;
+  width: 350px;
+  height: 320px;
+}
+.weeks {
+  padding: 8px 0px;
+}
+.weeks {
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+.weeks span {
+  padding: 5px;
+  color: rgb(89, 89, 245);
+  font-size: 14px;
+}
+.days span {
+  padding: 15px;
+}
+.month-week {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.month-week span {
+  font-size: 13px;
+  margin-left: 5px;
+  background-color: rgb(240, 85, 227);
+  padding: 5px 15px;
+  border-radius: 50px;
+}
+.month-week span {
+  background-color: transparent;
+  color: rgb(240, 85, 227);
+  border: 2px solid rgb(240, 85, 227);
+}
+.days {
+  display: flex;
+}
+.days span {
+  font-size: 20px;
+  text-align: center;
+  width: 40px;
+  padding: 10px 10px;
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+}
+.days span:not(.next-month)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background-color: rgb(89, 89, 245);
+  border-radius: 100%;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.days span:not(.next-month):hover::before {
+  opacity: 0.5;
+}
+
+.next-month {
+  color: rgb(121, 112, 112);
+  cursor: not-allowed;
+}
+main .calendar {
+  gap: 1.6rem;
+  width: 400px;
+  height: 600px;
+  font-family: "Quicksand";
+  background: rgb(52, 53, 53);
+}
+main.calendar {
+  background-color: rgb(32, 31, 31);
+  border-radius: 30%;
+  box-shadow: 5px 5px 12px blue;
+}
+.list {
+  padding: 30px 35px;
+  box-shadow: 5px 5px 12px rgb(241, 33, 85);
+  background-color: rgb(32, 31, 31);
+  color: white;
+  border-radius: 30px;
+  width: 350px;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+.list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.list ul li {
+  position: relative;
+  border-bottom: 1px solid rgb(241, 33, 85);
+  cursor: pointer;
+}
+.list ul li:last-child {
+  border-bottom: none;
+}
+.list .list-head {
+  font-size: 30px;
+  align-self: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+.list ul li label input:checked ~ p {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.news {
+  box-shadow: 5px 5px 12px rgb(182, 235, 38);
+  padding: 10px;
+  border-radius: 30px;
+  background-color: rgb(32, 31, 31);
+  color: white;
+  margin: 0px 0px;
+  /* grid-column-start: 2;
+  grid-column-end: 4; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 350px;
+}
+
+.top {
+  justify-self: center;
+  align-self: center;
+  width: 450px;
+  height: 0px;
+}
+
+.logo {
+  display: flex;
+}
+
+/* .part_1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid rgb(239, 239, 247);
+margin-left: 10px;
+}
+.part_1 i {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.input{
+  border: none;
+  font-size: 14px;
+
+}
+.part_2{
+  display: flex;
+  align-items: center;
+}
+.far fa-bell{
+  padding: 12px;
+font-size: 20px;
+} */
+
+.news ul {
+  align-self: flex-start;
+  margin: 15px 15px;
+}
+
+.news ul li {
+  padding: 5px;
+  font-size: 15px;
+  list-style: square;
+  letter-spacing: 1px;
+}
+
+.news ul li a {
+  transition: 0.5s;
+}
+.news ul li a:hover {
+  color: rgb(182, 235, 38);
+  text-shadow: 0 0 50px rgb(182, 235, 38);
+}
+
+.favourites {
+  position: relative;
+  background-color: rgb(32, 31, 31);
+  border-radius: 30px;
+  width: 350px;
+  padding: 30px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 5px 5px 12px rgb(235, 120, 12);
+}
+
+.fav-title {
+  align-self: center;
+}
+
+.progress {
+  display: flex;
+}
+
+.hobbies {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.progress .progress-bar {
+  position: absolute;
+  left: 136px;
+  width: 60%;
+  height: 15px;
+  border-radius: 50px;
+  background: rgb(187, 181, 181);
+}
+
+.progress .progress-bar .progressing {
+ 
+  background-color: rgb(235, 120, 12);
+  border-radius: 50px;
+}
+.progress .progress-bar .prog-1{
+width: 40%;
+height: 100%;
+}
+.progress .progress-bar .prog-2{
+  width: 20%;
+  height: 100%;
+  }
+  .progress .progress-bar .prog-3{
+    width: 20%;
+    height: 100%;
+    }
+    .progress .progress-bar .prog-4{
+      width: 20%;
+      height: 100%;
+      }
+
+.progress .progress-bar .circle {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: rgb(32, 31, 31);
+  border: 6px solid rgb(235, 120, 12);
+  border-radius: 100%;
+  transform: translateY(-20px) translateX(-15px);
+
+}
+.progress .percent{
+  position: absolute;
+  right: 178px;
+}
